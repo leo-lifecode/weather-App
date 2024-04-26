@@ -3,6 +3,7 @@
   position: relative;
   flex-direction: column;
   max-width: max-content;
+  margin-bottom: 8px;
 }
 
 .location {
@@ -99,4 +100,10 @@ button:hover {
   background-color: #6191f1;
   letter-spacing: 0.5px;
   transition: 100ms;
+}
+
+@media screen and (max-width: 400px) {
+  .location {
+    width: 180px;
+  }
 }

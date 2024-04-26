@@ -29,38 +29,47 @@ const Navbar = ({ onSearchChange }) => {
     };
   }, [showBar]);
 
-  const loadOptions = (inputvalue) => {
-    return fetch(
-      `${GEO_API_URL}/cities?namePrefix=${inputvalue}&limit=10`,
-      geoApiOptions
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        return {
-          options: response.data.map((city) => {
-            return {
-              value: `${city.latitude} ${city.longitude}`,
-              label: `${city.name} ${city.countryCode}`,
-            };
-          }),
-        };
-      })
-      .catch((err) => console.error(err));
+  const loadOptions = async (inputvalue) => {
+    try {
+      const api = await fetch(
+        `${GEO_API_URL}/cities?namePrefix=${inputvalue}&limit=10`,
+        geoApiOptions
+      );
+
+      const response = await api.json();
+      return {
+        options: response.data.map((city) => {
+          return {
+            value: `${city.latitude} ${city.longitude}`,
+            label: `${city.name} ${city.countryCode}`,
+          };
+        }),
+      };
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChangeSearch = (searchData) => {
-    console.log("ini set search", search);
     setsearch(searchData);
     onSearchChange(searchData);
   };
+
+  let name = "";
+  if (search !== null) {
+    name = search.label.split(" ");
+  }
 
   return (
     <nav className="navbar">
       <div className="location">
         <div style={{ display: "flex", gap: "11px" }}>
           <img src={location} alt="location" className="location-svg" />
-          <h3>Fortaleza</h3>
+          <h3>
+            {`${name[0] === undefined ? "Kota Medan" : name[0]} ${
+              name[1] === undefined ? " " : name[1]
+            }`}
+          </h3>
         </div>
         <img
           src={ArrowDown}
@@ -76,7 +85,6 @@ const Navbar = ({ onSearchChange }) => {
           <AsyncPaginate
             placeholder="search your city..."
             debounceTimeout={600}
-            value={search}
             onChange={handleChangeSearch}
             loadOptions={loadOptions}
             styles={customStyles}
