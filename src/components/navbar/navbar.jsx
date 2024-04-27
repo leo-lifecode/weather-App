@@ -65,11 +65,12 @@ const Navbar = ({ onSearchChange }) => {
       <div className="location">
         <div style={{ display: "flex", gap: "11px" }}>
           <img src={location} alt="location" className="location-svg" />
-          <h3>
+          <h4>
             {`${name[0] === undefined ? "Kota Medan" : name[0]} ${
               name[1] === undefined ? " " : name[1]
-            }`}
-          </h3>
+            }
+            ${name[2] === undefined ? " " : name[2]}`}
+          </h4>
         </div>
         <img
           src={ArrowDown}

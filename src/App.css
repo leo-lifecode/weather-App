@@ -1,19 +1,42 @@
 .box {
   padding: 44px 40px;
-  /* background: rgb(41, 178, 221);
+}
+
+.afternoon {
+  background: rgb(41, 178, 221);
   background: linear-gradient(
     317deg,
     rgba(41, 178, 221, 1) 0%,
     rgba(51, 170, 221, 1) 47%,
     rgba(45, 200, 234, 1) 100%
-  ); */
+  );
+}
 
+.night {
   background: rgb(8, 36, 79);
   background: linear-gradient(
     165deg,
     rgba(8, 36, 79, 1) 0%,
     rgba(19, 76, 181, 1) 47%,
     rgba(11, 66, 171, 1) 100%
+  );
+}
+
+.cardafternoon {
+  background: rgb(40, 138, 195);
+  background: linear-gradient(
+    152deg,
+    rgba(40, 138, 195, 1) 0%,
+    rgba(39, 139, 197, 0.8099614845938375) 100%
+  );
+}
+
+.cardnight {
+  background: rgb(13, 57, 133);
+  background: radial-gradient(
+    circle,
+    rgba(13, 57, 133, 1) 0%,
+    rgba(12, 56, 137, 1) 100%
   );
 }
 
