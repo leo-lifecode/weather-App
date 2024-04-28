@@ -1,7 +1,7 @@
 import React from "react";
 import calender from "../../assets/calender.svg";
 import "./BoxNextForecast.css";
-import Rain from "../../assets/images/3.png";
+import rain from "../../assets/images/3.png";
 import thunder from "../../assets/images/4.png";
 import nightCloud from "../../assets/images/2.png";
 import sunCloud from "../../assets/images/1.png";
@@ -31,13 +31,15 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
   function Cloudtoday(param) {
     if (checkDay === "Siang") {
       if (param === "Clouds" || param === "Clear") return sunCloud;
+      if (param === "Rain") return rain;
+      if (param === "Thunderstorm") return thunder;
     } else {
       if (param === "Clouds" || param === "Clear") return nightCloud;
       if (param === "Thunderstorm") return thunder;
-      if (param === "Rain") return Rain;
+      if (param === "Rain") return rain;
     }
   }
-
+  console.log(weather);
   return (
     <div
       className={`${
@@ -51,7 +53,12 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
       <div className="box-forecastday">
         <div className="forecastday">
           <div style={{ width: "99.7px" }}>{date[0]}</div>
-          <img src={Cloudtoday(weather[0])} width={45} height={45} alt="" />
+          <img
+            src={Cloudtoday(weather[0])}
+            width={45}
+            height={45}
+            alt={weather[0]}
+          />
           <div className="tempaverage">
             <div className="tempmax">{tempmax[0]}&deg;C</div>
             <div className="tempmin">{tempmin[0]}&deg;C</div>
@@ -59,7 +66,12 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
         </div>
         <div className="forecastday">
           <div style={{ width: "99.7px" }}>{date[1]}</div>
-          <img src={Cloudtoday(weather[1])} width={45} height={45} alt="" />
+          <img
+            src={Cloudtoday(weather[1])}
+            width={45}
+            height={45}
+            alt={weather[1]}
+          />
           <div className="tempaverage">
             <div className="tempmax">{tempmax[1]}&deg;C</div>
             <div className="tempmin">{tempmin[1]}&deg;C</div>
@@ -67,7 +79,12 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
         </div>
         <div className="forecastday">
           <div style={{ width: "99.7px" }}>{date[2]}</div>
-          <img src={Cloudtoday(weather[2])} width={45} height={45} alt="" />
+          <img
+            src={Cloudtoday(weather[2])}
+            width={45}
+            height={45}
+            alt={weather[2]}
+          />
           <div className="tempaverage">
             <div className="tempmax">{tempmax[2]}&deg;C</div>
             <div className="tempmin">{tempmin[2]}&deg;C</div>
@@ -75,7 +92,12 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
         </div>
         <div className="forecastday">
           <div style={{ width: "99.7px" }}>{date[3]}</div>
-          <img src={Cloudtoday(weather[3])} width={45} height={45} alt="" />
+          <img
+            src={Cloudtoday(weather[3])}
+            width={45}
+            height={45}
+            alt={weather[3]}
+          />
           <div className="tempaverage">
             <div className="tempmax">{tempmax[3]}&deg;C</div>
             <div className="tempmin">{tempmin[3]}&deg;C</div>
