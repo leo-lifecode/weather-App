@@ -29,11 +29,11 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
 
   function Cloudtoday(param) {
     if (checkDay === "Siang") {
-      if (param === "Clouds" || param === "Clear") return sunCloud;
+      if (param === "Clouds" || param === "Clear" || param === "Haze") return sunCloud;
       if (param === "Rain") return rain;
       if (param === "Thunderstorm") return thunder;
     } else {
-      if (param === "Clouds" || param === "Clear") return nightCloud;
+      if (param === "Clouds" || param === "Clear" || param === "Haze") return nightCloud;
       if (param === "Thunderstorm") return thunder;
       if (param === "Rain") return rain;
     }

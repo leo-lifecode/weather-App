@@ -31,12 +31,13 @@ const CardToday = ({ checkDay, forecasttoday }) => {
 
   function Cloudtoday(param) {
     if (checkDay === "Siang") {
-      if (param === "Clouds" || param === "Clear") return sunCloud;
+      if (param === "Clouds" || param === "Clear" || param === "Haze") return sunCloud;
       if (param === "Rain") return sunRain;
       if (param === "Thunderstorm") return thunder;
     } else {
-      if (param === "Clouds" || param === "Clear") return NightClouds;
+      if (param === "Clouds" || param === "Clear" || param === "Haze") return NightClouds;
       if (param === "Rain") return NightRain;
+      if (param === "Thunderstorm") return thunder;
     }
   }
 

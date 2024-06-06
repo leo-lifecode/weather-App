@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className={`${checkDay === "Malam" ? "night" : "afternoon"} box`}>
-      <div style={{ maxWidth: "1240px", margin: "auto" }} classname="m-auto">
+      <div style={{ maxWidth: "1240px", margin: "auto" }} className="m-auto">
         <Navbar onSearchChange={onSearchChange} />
         <div className="homepage">
           <ImageCloudCelcius

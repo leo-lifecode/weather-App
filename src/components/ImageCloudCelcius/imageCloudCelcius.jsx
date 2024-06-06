@@ -27,11 +27,13 @@ const ImageCloudCelcius = ({ fetchDataCity, checkDay }) => {
 
   function imageCloud() {
     if (checkDay === "Siang") {
-      if (weather === "Clouds" || weather === "Clear") return sunCloud;
+      if (weather === "Clouds" || weather === "Clear" || weather === "Haze")
+        return sunCloud;
       if (weather === "Rain") return sunRain;
       if (weather === "Thunderstorm") return thunder;
     } else {
-      if (weather === "Clouds" || weather === "Clear") return NightClouds;
+      if (weather === "Clouds" || weather === "Clear" || weather === "Haze")
+        return NightClouds;
       if (weather === "Rain") return NightRain;
       if (weather === "Thunderstorm") return thunder;
     }
