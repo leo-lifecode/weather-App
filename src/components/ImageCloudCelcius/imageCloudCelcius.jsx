@@ -1,4 +1,3 @@
-import React from "react";
 import sunCloud from "../../assets/images/Sun cloud angled rain (2).png";
 import thunder from "../../assets/images/thunder.png";
 import sunRain from "../../assets/images/Sun cloud angled rain.png";
@@ -34,6 +33,7 @@ const ImageCloudCelcius = ({ fetchDataCity, checkDay }) => {
     } else {
       if (weather === "Clouds" || weather === "Clear") return NightClouds;
       if (weather === "Rain") return NightRain;
+      if (weather === "Thunderstorm") return thunder;
     }
   }
 

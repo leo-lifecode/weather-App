@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./navbar.css";
 import location from "../../assets/location.svg";
 import ArrowDown from "../../assets/ArrowDown.svg";

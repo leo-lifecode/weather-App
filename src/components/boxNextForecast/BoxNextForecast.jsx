@@ -1,4 +1,3 @@
-import React from "react";
 import calender from "../../assets/calender.svg";
 import "./BoxNextForecast.css";
 import rain from "../../assets/images/3.png";
@@ -39,7 +38,6 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
       if (param === "Rain") return rain;
     }
   }
-  console.log(weather);
   return (
     <div
       className={`${
@@ -59,7 +57,7 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
             height={45}
             alt={weather[0]}
           />
-          <div className="tempaverage">
+          <div className="tempaverage w-[82px]">
             <div className="tempmax">{tempmax[0]}&deg;C</div>
             <div className="tempmin">{tempmin[0]}&deg;C</div>
           </div>
@@ -72,7 +70,7 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
             height={45}
             alt={weather[1]}
           />
-          <div className="tempaverage">
+          <div className="tempaverage w-[82px]">
             <div className="tempmax">{tempmax[1]}&deg;C</div>
             <div className="tempmin">{tempmin[1]}&deg;C</div>
           </div>
@@ -85,7 +83,7 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
             height={45}
             alt={weather[2]}
           />
-          <div className="tempaverage">
+          <div className="tempaverage w-[82px]">
             <div className="tempmax">{tempmax[2]}&deg;C</div>
             <div className="tempmin">{tempmin[2]}&deg;C</div>
           </div>
@@ -98,7 +96,7 @@ const BoxNextForecast = ({ checkDay, forecastnext }) => {
             height={45}
             alt={weather[3]}
           />
-          <div className="tempaverage">
+          <div className="tempaverage w-[82px]">
             <div className="tempmax">{tempmax[3]}&deg;C</div>
             <div className="tempmin">{tempmin[3]}&deg;C</div>
           </div>
