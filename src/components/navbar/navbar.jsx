@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./navbar.css";
 import location from "../../assets/location.svg";
 import ArrowDown from "../../assets/ArrowDown.svg";
@@ -6,36 +5,18 @@ import { useState } from "react";
 import { GEO_API_URL, geoApiOptions } from "../../services/apicity";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { customStyles } from "./customstyles";
+import { useAnyWindow } from "../../hooks/useAnyWindow";
 
 const Navbar = ({ onSearchChange }) => {
   const [showBar, setShowBar] = useState(false);
   const [search, setsearch] = useState(null);
+  const clikcwindow = useAnyWindow(showBar, setShowBar);
+  const getcityname = localStorage.getItem("namecity");
 
-  useEffect(() => {
-    const handleclickwindow = (e) => {
-      const arrow = document.querySelector(".arrow-down");
-      const searchBox = document.querySelector(".search-box");
-      if (
-        showBar &&
-        !arrow.contains(e.target) &&
-        !searchBox.contains(e.target)
-      ) {
-        setShowBar(false);
-      }
-    };
-    window.addEventListener("click", handleclickwindow);
-    return () => {
-      window.removeEventListener("click", handleclickwindow);
-    };
-  }, [showBar]);
 
   const loadOptions = async (inputvalue) => {
     try {
-      const api = await fetch(
-        `${GEO_API_URL}/cities?namePrefix=${inputvalue}&limit=10`,
-        geoApiOptions
-      );
-
+      const api = await fetch(`${GEO_API_URL}/cities?namePrefix=${inputvalue}&limit=10`, geoApiOptions);
       const response = await api.json();
       return {
         options: response.data.map((city) => {
@@ -55,10 +36,13 @@ const Navbar = ({ onSearchChange }) => {
     onSearchChange(searchData);
   };
 
-  let name = "";
-  if (search !== null) {
-    name = search.label.split(" ");
+  let name = getcityname ? getcityname : "";
+  if (getcityname === name) {
+    name = getcityname.split(" ");
   }
+  // if (search !== null) {
+  //   name = search.label.split(" ");
+  // }
 
   return (
     <nav className="navbar">
@@ -66,10 +50,7 @@ const Navbar = ({ onSearchChange }) => {
         <div style={{ display: "flex", gap: "11px" }}>
           <img src={location} alt="location" className="location-svg" />
           <h4>
-            {`${name[0] === undefined ? "Kota Medan" : name[0]} ${
-              name[1] === undefined ? " " : name[1]
-            }
-            ${name[2] === undefined ? " " : name[2]}`}
+            {name[0] || "Kota Medan"} {name[1] || ""} {name[2] || ""}
           </h4>
         </div>
         <img

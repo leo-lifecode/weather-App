@@ -20,11 +20,17 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let lat = "";
-      let lon = "";
+      const getlat = localStorage.getItem("lat");
+      const getlon = localStorage.getItem("lon");
+
+      let lat = getlat ? getlat : "";
+      let lon = getlon ? getlon : "";
 
       if (dataCity !== null) {
         [lat, lon] = dataCity.value.split(" ");
+        localStorage.setItem("lat", lat);
+        localStorage.setItem("lon", lon);
+        localStorage.setItem("namecity", dataCity.label);
       }
       // apicall getweather
       getWeather(lat, lon).then((response) => {
