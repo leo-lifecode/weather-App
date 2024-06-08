@@ -3,7 +3,7 @@ import "./navbar.css";
 import location from "../../assets/location.svg";
 import ArrowDown from "../../assets/ArrowDown.svg";
 import { useState } from "react";
-import { GEO_API_URL, geoApiOptions } from "../../apicity";
+import { GEO_API_URL, geoApiOptions } from "../../services/apicity";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { customStyles } from "./customstyles";
 

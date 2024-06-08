@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import ImageCloudCelcius from "./components/ImageCloudCelcius/imageCloudCelcius";
 import CardToday from "./components/boxtoday/CardToday";
 import BoxNextForecast from "./components/boxNextForecast/BoxNextForecast";
+import checkCloud from "./utils/checkCloud";
+import { getForecast, getWeather } from "./services/apiweather";
 
 function App() {
   const [dataCity, setDataCity] = useState(null);
@@ -24,31 +26,18 @@ function App() {
       if (dataCity !== null) {
         [lat, lon] = dataCity.value.split(" ");
       }
-      const api_key = "d67e454852842837519116e10a7c2874";
-      const apiweather = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${
-          lat === "" ? "3.65" : lat
-        }&lon=${lon === "" ? "98.6667" : lon}&appid=${api_key}&units=metric`
-      );
-      const response = await apiweather.json();
-      setFetchDataCity(response);
+      // apicall getweather
+      getWeather(lat, lon).then((response) => {
+        setFetchDataCity(response);
+        setCheckDay(checkCloud(response));
+      });
+      // apicall getForecast
+      const forecast = await getForecast(lat, lon);
 
-      const apiforecast = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${
-          lat === "" ? "3.65" : lat
-        }&lon=${lon === "" ? "98.6667" : lon}&appid=${api_key}&units=metric`
-      );
-      const forecast = await apiforecast.json();
       const forecastnext = forecast.list;
-      setforecastnext(forecastnext);
       const forecasttoday = forecast.list.slice(1, 5);
+      setforecastnext(forecastnext);
       setforecasttoday(forecasttoday);
-
-      if (response && response.weather && response.weather[0]) {
-        const day = response.weather[0].icon;
-        const lastChar = day ? day[day.length - 1] : null;
-        lastChar === "n" ? setCheckDay("Malam") : setCheckDay("Siang");
-      }
     }
 
     fetchData();

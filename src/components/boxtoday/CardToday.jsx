@@ -1,11 +1,5 @@
-import React from "react";
 import "./CardToday.css";
-import sunCloud from "../../assets/images/Sun cloud angled rain (2).png";
-import thunder from "../../assets/images/thunder.png";
-import sunRain from "../../assets/images/Sun cloud angled rain.png";
-import NightRain from "../../assets/images/Moon cloud mid rain.png";
-import NightClouds from "../../assets/images/5.png";
-
+import { checkCloudTodayCard } from "../../utils/checkCloudToday";
 const CardToday = ({ checkDay, forecasttoday }) => {
   let dateday = [];
   let times = [];
@@ -29,18 +23,6 @@ const CardToday = ({ checkDay, forecasttoday }) => {
     day = [bulan, tanggalan];
   }
 
-  function Cloudtoday(param) {
-    if (checkDay === "Siang") {
-      if (param === "Clouds" || param === "Clear" || param === "Haze") return sunCloud;
-      if (param === "Rain") return sunRain;
-      if (param === "Thunderstorm") return thunder;
-    } else {
-      if (param === "Clouds" || param === "Clear" || param === "Haze") return NightClouds;
-      if (param === "Rain") return NightRain;
-      if (param === "Thunderstorm") return thunder;
-    }
-  }
-
   return (
     <div
       className={`${
@@ -57,7 +39,7 @@ const CardToday = ({ checkDay, forecasttoday }) => {
         <div className="boxtime">
           <div className="time">{Math.round(temp[0])}&deg;C</div>
           <img
-            src={Cloudtoday(weather[0])}
+            src={checkCloudTodayCard(weather[0], checkDay)}
             alt="Cloudtoday()"
             className="cloudtoday"
           />
@@ -66,7 +48,7 @@ const CardToday = ({ checkDay, forecasttoday }) => {
         <div className="boxtime">
           <div className="time">{Math.round(temp[1])}&deg;C</div>
           <img
-            src={Cloudtoday(weather[1])}
+            src={checkCloudTodayCard(weather[1], checkDay)}
             alt="Cloudtoday()"
             className="cloudtoday"
           />
@@ -75,7 +57,7 @@ const CardToday = ({ checkDay, forecasttoday }) => {
         <div className="boxtime">
           <div className="time">{Math.round(temp[2])}&deg;C</div>
           <img
-            src={Cloudtoday(weather[2])}
+            src={checkCloudTodayCard(weather[2], checkDay)}
             alt="Cloudtoday()"
             className="cloudtoday"
           />
@@ -84,7 +66,7 @@ const CardToday = ({ checkDay, forecasttoday }) => {
         <div className="boxtime">
           <div className="time">{Math.round(temp[3])}&deg;C</div>
           <img
-            src={Cloudtoday(weather[3])}
+            src={checkCloudTodayCard(weather[3], checkDay)}
             alt="cloudtime"
             className="cloudtoday"
           />

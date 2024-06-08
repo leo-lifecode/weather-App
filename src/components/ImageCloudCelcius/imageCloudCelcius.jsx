@@ -30,12 +30,12 @@ const ImageCloudCelcius = ({ fetchDataCity, checkDay }) => {
       if (weather === "Clouds" || weather === "Clear" || weather === "Haze")
         return sunCloud;
       if (weather === "Rain") return sunRain;
-      if (weather === "Thunderstorm") return thunder;
+      if (weather === "Thunderstorm" || weather === "Drizzle") return thunder;
     } else {
       if (weather === "Clouds" || weather === "Clear" || weather === "Haze")
         return NightClouds;
       if (weather === "Rain") return NightRain;
-      if (weather === "Thunderstorm") return thunder;
+      if (weather === "Thunderstorm" || weather === "Drizzle") return thunder;
     }
   }
 
