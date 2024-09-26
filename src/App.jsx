@@ -43,7 +43,6 @@ function App() {
       const forecasttoday = forecast.list.slice(1, 5);
       setforecastnext(forecastnext);
       setforecasttoday(forecasttoday);
-      console.log(forecast);
     }
 
     fetchData();
