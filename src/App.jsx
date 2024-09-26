@@ -39,11 +39,11 @@ function App() {
       });
       // apicall getForecast
       const forecast = await getForecast(lat, lon);
-
       const forecastnext = forecast.list;
       const forecasttoday = forecast.list.slice(1, 5);
       setforecastnext(forecastnext);
       setforecasttoday(forecasttoday);
+      console.log(forecast);
     }
 
     fetchData();

@@ -33,11 +33,12 @@
   font-weight: bold;
   align-items: center;
   border-radius: 20px;
+  border: 0.5px solid transparent;
 }
 .forecastday:hover {
   border: 0.5px solid rgb(142, 187, 255);
   background: rgba(72, 153, 227, 0.2);
-  transition: 250ms;
+  transition: 150ms;
 }
 
 .tempaverage {
